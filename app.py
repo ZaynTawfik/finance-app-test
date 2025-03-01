@@ -157,20 +157,19 @@ def main():
             st.write(st.session_state.analysis_result.raw)
             
             # Generate final report
-            #finance_crew = Crew(
-            #    agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
-            #    tasks=[financial_report_assembly],
-            #    verbose=True
-            #)
+            recommend_crew = Crew(
+                agents=[financial_analyst, wealth_manager, report_generator],
+                tasks=[analyze_finances, create_recommendations, generate_report],
+                verbose=True
+            )
             
-            #final_report = finance_crew.kickoff(inputs={
-            #    'profile': st.session_state.profile,
-             #   'goals': st.session_state.goals,
-             #   'transactions': st.session_state.get('transactions', pd.DataFrame())
-           # })
+            final_report = recommend_crew.kickoff(inputs={
+                'profile': st.session_state.profile,
+                'goals': st.session_state.goals,
+            })
             
             st.subheader("Comprehensive Financial Plan")
-           # st.markdown(final_report.raw)
+            st.markdown(final_report.raw)
 
 def calculate_retirement(profile, goals):
     # Simplified retirement calculation
