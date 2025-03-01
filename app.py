@@ -47,7 +47,7 @@ def main():
         }
     # Sidebar navigation
     st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Profile Setup", "Financial Goals", "Transactions Analysis", "Recommendations"])
+    page = st.sidebar.radio("Go to", ["Profile Setup", "Financial Goals", "Transactions Analysis", "Recommendations","Settings"])
 
     # Profile Setup Page
     if page == "Profile Setup":
