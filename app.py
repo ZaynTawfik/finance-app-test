@@ -38,7 +38,13 @@ def main():
         st.session_state.goals = []
     if 'profile' not in st.session_state:
         st.session_state.profile = {}
-    
+    if 'settings' not in st.session_state:
+        st.session_state.settings = {
+            'inflation': 6.0,
+            'life_expectancy': 90,
+            'emergency_funds': 24,
+            'investment_increase': 10.0
+        }
     # Sidebar navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Go to", ["Profile Setup", "Financial Goals", "Transactions Analysis", "Recommendations"])
@@ -191,6 +197,36 @@ def main():
             st.write(st.session_state.goals)
             st.subheader("Comprehensive Financial Plan")
             st.markdown(final_report.raw)
+    # Settings Page
+    elif page == "Settings":
+        st.header("Financial Assumptions Settings")
+        with st.form("settings_form"):
+            st.subheader("Economic Assumptions")
+            inflation = st.number_input("Inflation Rate (% p.a.)", 
+                                      min_value=0.0, max_value=20.0, 
+                                      value=st.session_state.settings['inflation'])
+            
+            st.subheader("Personal Assumptions")
+            life_expectancy = st.number_input("Life Expectancy (years)", 
+                                            min_value=60, max_value=120, 
+                                            value=st.session_state.settings['life_expectancy'])
+            emergency_funds = st.number_input("Emergency Funds (months)", 
+                                             min_value=3, max_value=60, 
+                                             value=st.session_state.settings['emergency_funds'])
+            
+            st.subheader("Investment Growth")
+            investment_increase = st.number_input("Annual Increase in Investments (%)", 
+                                                 min_value=0.0, max_value=50.0, 
+                                                 value=st.session_state.settings['investment_increase'])
+            
+            if st.form_submit_button("Save Settings"):
+                st.session_state.settings = {
+                    'inflation': inflation,
+                    'life_expectancy': life_expectancy,
+                    'emergency_funds': emergency_funds,
+                    'investment_increase': investment_increase
+                }
+                st.success("Settings updated successfully!")
 
 def calculate_retirement(profile, goals):
     # Simplified retirement calculation
