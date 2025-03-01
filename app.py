@@ -5,6 +5,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 import pandas as pd
 from crewai import Crew
+from crewai import Agent, Task, Crew
 from helper import load_env
 import os
 import yaml
