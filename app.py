@@ -1,9 +1,33 @@
 # app.py (Main Application)
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import streamlit as st
 import pandas as pd
 from crewai import Crew
 from financial_agents import financial_analysis_agent, budget_planning_agent, financial_viz_agent
 from financial_tasks import expense_analysis, budget_management, financial_visualization, financial_report_assembly
+from helper import load_env
+import os
+import yaml
+# Suppress warnings
+import warnings
+warnings.filterwarnings('ignore')
+
+from crewai_tools import FileReadTool
+csv_tool = FileReadTool(file_path='./transactions.csv')
+
+# Load environment variables
+load_env()
+
+# Set OpenAI model (Update with your model choice)
+os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o-mini'
+
+def load_yaml(file_path):
+    with open(file_path, 'r') as file:
+        return yaml.safe_load(file)
+agents_config = load_yaml('config/agents.yaml')
+tasks_config = load_yaml('config/tasks.yaml')
 
 def main():
     st.set_page_config(page_title="AI Financial Advisor", layout="wide")
@@ -67,20 +91,56 @@ def main():
     # Transactions Analysis Page
     elif page == "Transactions Analysis":
         st.header("Transactions Analysis")
-        uploaded_file = st.file_uploader("Upload Transactions CSV", type=["csv"])
+        uploaded_file = FileReadTool(file_path='./transactions.csv')
+        #uploaded_file = st.file_uploader("Upload Transactions CSV", type=["csv"])
         
         if uploaded_file:
             transactions = pd.read_csv(uploaded_file)
             st.session_state.transactions = transactions
             
-            # Process transactions with CrewAI
-            finance_crew = Crew(
-                agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
-                tasks=[expense_analysis, budget_management, financial_visualization],
-                verbose=True
+            financial_analysis_agent = Agent(config=agents_config['financial_analysis_agent'],tools=[csv_tool])
+            budget_planning_agent = Agent(config=agents_config['budget_planning_agent'],tools=[csv_tool])
+            financial_viz_agent = Agent(config=agents_config['financial_viz_agent'],allow_code_execution=False)
+
+            # Create tasks
+            expense_analysis = Task(
+              config=tasks_config['expense_analysis'],
+              agent=financial_analysis_agent
             )
-            
-            result = finance_crew.kickoff(inputs={'transactions': transactions})
+
+            budget_management = Task(
+              config=tasks_config['budget_management'],
+              agent=budget_planning_agent
+            )
+
+            financial_visualization = Task(
+              config=tasks_config['financial_visualization'],
+              agent=financial_viz_agent
+            )
+
+            final_report_assembly = Task(
+              config=tasks_config['final_report_assembly'],
+              agent=budget_planning_agent,
+              context=[expense_analysis, budget_management, financial_visualization]
+            )
+
+            #Create crew
+            finance_crew = Crew(
+              agents=[
+                financial_analysis_agent,
+                budget_planning_agent,
+                financial_viz_agent
+              ],
+              tasks=[
+                expense_analysis,
+                budget_management,
+                financial_visualization,
+                final_report_assembly
+              ],
+              verbose=True
+            )
+
+            result = finance_crew.kickoff()
             st.session_state.analysis_result = result
             
             st.subheader("Spending Analysis")
@@ -98,20 +158,20 @@ def main():
             st.write(st.session_state.analysis_result.raw)
             
             # Generate final report
-            finance_crew = Crew(
-                agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
-                tasks=[financial_report_assembly],
-                verbose=True
-            )
+            #finance_crew = Crew(
+            #    agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
+            #    tasks=[financial_report_assembly],
+            #    verbose=True
+            #)
             
-            final_report = finance_crew.kickoff(inputs={
-                'profile': st.session_state.profile,
-                'goals': st.session_state.goals,
-                'transactions': st.session_state.get('transactions', pd.DataFrame())
-            })
+            #final_report = finance_crew.kickoff(inputs={
+            #    'profile': st.session_state.profile,
+             #   'goals': st.session_state.goals,
+             #   'transactions': st.session_state.get('transactions', pd.DataFrame())
+           # })
             
             st.subheader("Comprehensive Financial Plan")
-            st.markdown(final_report.raw)
+           # st.markdown(final_report.raw)
 
 def calculate_retirement(profile, goals):
     # Simplified retirement calculation
