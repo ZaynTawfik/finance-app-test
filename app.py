@@ -1,1 +1,127 @@
+# app.py (Main Application)
+import streamlit as st
+import pandas as pd
+from crewai import Crew
+from financial_agents import financial_analysis_agent, budget_planning_agent, financial_viz_agent
+from financial_tasks import expense_analysis, budget_management, financial_visualization, financial_report_assembly
 
+def main():
+    st.set_page_config(page_title="AI Financial Advisor", layout="wide")
+    
+    # Initialize session state
+    if 'goals' not in st.session_state:
+        st.session_state.goals = []
+    if 'profile' not in st.session_state:
+        st.session_state.profile = {}
+    
+    # Sidebar navigation
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Go to", ["Profile Setup", "Financial Goals", "Transactions Analysis", "Recommendations"])
+
+    # Profile Setup Page
+    if page == "Profile Setup":
+        st.header("Personal Financial Profile")
+        with st.form("profile_form"):
+            col1, col2 = st.columns(2)
+            with col1:
+                st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=30)
+                st.session_state.profile['income'] = st.number_input("Monthly Income ($)", min_value=0, value=5000)
+                st.session_state.profile['savings'] = st.number_input("Current Savings ($)", min_value=0, value=10000)
+                
+            with col2:
+                st.session_state.profile['investments'] = st.number_input("Monthly Investments ($)", min_value=0, value=1000)
+                st.session_state.profile['loans'] = st.number_input("Monthly Loan EMIs ($)", min_value=0, value=500)
+                st.session_state.profile['expenses'] = st.number_input("Monthly Expenses ($)", min_value=0, value=3000)
+            
+            if st.form_submit_button("Save Profile"):
+                st.success("Profile updated successfully!")
+
+    # Financial Goals Page
+    elif page == "Financial Goals":
+        st.header("Financial Goals Planning")
+        with st.expander("Add New Goal"):
+            with st.form("goal_form"):
+                goal_name = st.text_input("Goal Name")
+                target_year = st.number_input("Target Year", min_value=2023, max_value=2100, value=2030)
+                target_amount = st.number_input("Target Amount ($)", min_value=0, value=50000)
+                
+                if st.form_submit_button("Add Goal"):
+                    st.session_state.goals.append({
+                        'name': goal_name,
+                        'year': target_year,
+                        'amount': target_amount
+                    })
+                    st.success("Goal added!")
+        
+        st.subheader("Current Goals")
+        goals_df = pd.DataFrame(st.session_state.goals)
+        if not goals_df.empty:
+            st.dataframe(goals_df)
+            if st.button("Recalculate Retirement Plan"):
+                retirement_age = calculate_retirement(st.session_state.profile, st.session_state.goals)
+                st.session_state.profile['retirement_age'] = retirement_age
+                st.success(f"Updated Projected Retirement Age: {retirement_age}")
+        else:
+            st.info("No goals added yet")
+
+    # Transactions Analysis Page
+    elif page == "Transactions Analysis":
+        st.header("Transactions Analysis")
+        uploaded_file = st.file_uploader("Upload Transactions CSV", type=["csv"])
+        
+        if uploaded_file:
+            transactions = pd.read_csv(uploaded_file)
+            st.session_state.transactions = transactions
+            
+            # Process transactions with CrewAI
+            finance_crew = Crew(
+                agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
+                tasks=[expense_analysis, budget_management, financial_visualization],
+                verbose=True
+            )
+            
+            result = finance_crew.kickoff(inputs={'transactions': transactions})
+            st.session_state.analysis_result = result
+            
+            st.subheader("Spending Analysis")
+            st.write(result.raw)
+
+    # Recommendations Page
+    elif page == "Recommendations":
+        st.header("Personalized Recommendations")
+        
+        if 'retirement_age' in st.session_state.profile:
+            st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
+        
+        if 'analysis_result' in st.session_state:
+            st.subheader("Financial Health Analysis")
+            st.write(st.session_state.analysis_result.raw)
+            
+            # Generate final report
+            finance_crew = Crew(
+                agents=[financial_analysis_agent, budget_planning_agent, financial_viz_agent],
+                tasks=[financial_report_assembly],
+                verbose=True
+            )
+            
+            final_report = finance_crew.kickoff(inputs={
+                'profile': st.session_state.profile,
+                'goals': st.session_state.goals,
+                'transactions': st.session_state.get('transactions', pd.DataFrame())
+            })
+            
+            st.subheader("Comprehensive Financial Plan")
+            st.markdown(final_report.raw)
+
+def calculate_retirement(profile, goals):
+    # Simplified retirement calculation
+    current_age = profile['age']
+    annual_savings = (profile['income'] - profile['expenses'] - profile['loans']) * 12
+    total_goals = sum(goal['amount'] for goal in goals)
+    
+    # Basic compound interest calculation
+    years_to_retire = (total_goals - profile['savings']) / annual_savings
+    return min(current_age + int(years_to_retire), 70)
+
+if __name__ == "__main__":
+    main()
