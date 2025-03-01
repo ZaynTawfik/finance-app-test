@@ -1,7 +1,6 @@
 streamlit
 crewai
 pandas
-
 crewai_tools
 pyyaml
 pydantic
