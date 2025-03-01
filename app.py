@@ -105,7 +105,7 @@ def main():
                     st.session_state.settings['emergency_funds'],
                     st.session_state.settings['investment_increase'])
                 st.session_state.profile['retirement_age'] = retirement_age
-                st.success(f"Updated Projected Retirement Age: {retirement_age}")
+                st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money}")
         else:
             st.info("No goals added yet")
 
