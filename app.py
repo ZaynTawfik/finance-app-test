@@ -57,7 +57,7 @@ def main():
             with col1:
                 st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=30)
                 st.session_state.profile['income'] = st.number_input("Monthly Income ($)", min_value=0, value=5000)
-                st.session_state.profile['monthly_expense'] = st.number_input("Monthly Income ($)", min_value=0, value=10000)
+                st.session_state.profile['monthly_expense'] = st.number_input("Monthly Expenses ($)", min_value=0, value=10000)
                 st.session_state.profile['roi_pct'] = st.number_input("ROI p.a.", min_value=0, value=100)
                 
             with col2:
@@ -95,7 +95,7 @@ def main():
                 retirement_age, retirement_money = calculate_retirement(
                     st.session_state.profile['age'],
                     st.session_state.profile['income'],
-                    st.session_state.profile['monthly_expense'],
+                    3000,
                     st.session_state.profile['monthly_investments'],
                     st.session_state.profile['current_portfolio'],
                     st.session_state.profile['roi_pct'],
