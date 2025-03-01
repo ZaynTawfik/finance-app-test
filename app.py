@@ -173,7 +173,7 @@ def main():
 
             generate_report = Task(
               config=rec_tasks_config['generate_report'],
-              agent=report_generator
+              agent=report_generator,
               context=[analyze_finances, create_recommendations]
             )            
             # Generate final report
