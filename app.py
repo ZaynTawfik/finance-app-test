@@ -201,20 +201,15 @@ def main():
     elif page == "Settings":
         st.header("Financial Assumptions Settings")
         with st.form("settings_form"):
-            st.subheader("Economic Assumptions")
             inflation = st.number_input("Inflation Rate (% p.a.)", 
                                       min_value=0.0, max_value=20.0, 
                                       value=st.session_state.settings['inflation'])
-            
-            st.subheader("Personal Assumptions")
             life_expectancy = st.number_input("Life Expectancy (years)", 
                                             min_value=60, max_value=120, 
                                             value=st.session_state.settings['life_expectancy'])
             emergency_funds = st.number_input("Emergency Funds (months)", 
                                              min_value=3, max_value=60, 
                                              value=st.session_state.settings['emergency_funds'])
-            
-            st.subheader("Investment Growth")
             investment_increase = st.number_input("Annual Increase in Investments (%)", 
                                                  min_value=0.0, max_value=50.0, 
                                                  value=st.session_state.settings['investment_increase'])
