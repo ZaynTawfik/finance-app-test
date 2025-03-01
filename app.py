@@ -101,9 +101,9 @@ def main():
                     st.session_state.profile['roi_pct'],
                     financial_milestone,
                     st.session_state.settings['life_expectancy'],
-                    st.session_state.settings['inflation_pct'],
-                    st.session_state.settings['emergency_funds_months'],
-                    st.session_state.settings['investment_increase_pct'])
+                    st.session_state.settings['inflation'],
+                    st.session_state.settings['emergency_funds'],
+                    st.session_state.settings['investment_increase'])
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.success(f"Updated Projected Retirement Age: {retirement_age}")
         else:
