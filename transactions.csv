@@ -1,0 +1,28 @@
+Date,Description,Amount,Category,Payment Method
+2024-05-01,Monthly Salary Deposit,4500.00,Income,Direct Deposit
+2024-05-01,Rent Payment,-1500.00,Housing,Check
+2024-05-02,Whole Foods Market,-127.50,Groceries,Credit Card
+2024-05-04,Shell Gas Station,-45.30,Transportation,Debit Card
+2024-05-05,Netflix Subscription,-15.99,Entertainment,Credit Card
+2024-05-08,Starbucks Coffee,-6.75,Dining Out,Debit Card
+2024-05-10,AT&T Mobile Payment,-85.00,Utilities,Credit Card
+2024-05-12,Amazon Purchase,-299.99,Shopping,Debit Card
+2024-05-15,CVS Pharmacy,-34.20,Healthcare,Debit Card
+2024-05-18,Olive Garden,-68.40,Dining Out,Credit Card
+2024-05-20,Spotify Premium,-9.99,Subscriptions,Credit Card
+2024-05-22,Best Buy Electronics,-899.99,Shopping,Credit Card
+2024-05-25,Petco Supplies,-58.30,Pets,Debit Card
+2024-05-28,AMC Theaters,-24.50,Entertainment,Debit Card
+2024-06-01,Monthly Salary Deposit,4500.00,Income,Direct Deposit
+2024-06-01,Rent Payment,-1500.00,Housing,Check
+2024-06-03,Trader Joe's,-89.95,Groceries,Debit Card
+2024-06-05,Netflix Subscription,-15.99,Entertainment,Credit Card
+2024-06-07,Chevron Gas,-52.10,Transportation,Debit Card
+2024-06-10,Verizon Fios,-75.00,Utilities,Credit Card
+2024-06-12,Apple App Store,-2.99,Software,Debit Card
+2024-06-15,Target Shopping,-156.80,Shopping,Debit Card
+2024-06-18,Red Lobster,-94.25,Dining Out,Credit Card
+2024-06-20,Gym Membership,-45.00,Fitness,Debit Card
+2024-06-23,Home Depot,-287.60,Home Maintenance,Credit Card
+2024-06-25,Spotify Premium,-9.99,Subscriptions,Credit Card
+2024-06-28,Prescription Refill,-15.00,Healthcare,Debit Card
