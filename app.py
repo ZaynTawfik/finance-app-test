@@ -89,11 +89,11 @@ def main():
     # Transactions Analysis Page
     elif page == "Transactions Analysis":
         st.header("Transactions Analysis")
-        uploaded_file = FileReadTool(file_path='./transactions.csv')
+        csv_tool = FileReadTool(file_path='./transactions.csv')
         #uploaded_file = st.file_uploader("Upload Transactions CSV", type=["csv"])
         
-        if uploaded_file:
-            transactions = pd.read_csv(uploaded_file)
+        if csv_tool:
+            #transactions = pd.read_csv(uploaded_file)
             st.session_state.transactions = transactions
             
             financial_analysis_agent = Agent(config=agents_config['financial_analysis_agent'],tools=[csv_tool])
