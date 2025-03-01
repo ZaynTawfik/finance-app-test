@@ -73,13 +73,13 @@ def main():
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
-                target_year = st.number_input("Target Year", min_value=2023, max_value=2100, value=2030)
+                target_age = st.number_input("Target Age", min_value=2023, max_value=2100, value=2030)
                 target_amount = st.number_input("Target Amount ($)", min_value=0, value=50000)
                 
                 if st.form_submit_button("Add Goal"):
                     st.session_state.goals.append({
                         'name': goal_name,
-                        'year': target_year,
+                        'age': target_year,
                         'amount': target_amount
                     })
                     st.success("Goal added!")
@@ -89,7 +89,20 @@ def main():
         if not goals_df.empty:
             st.dataframe(goals_df)
             if st.button("Recalculate Retirement Plan"):
-                retirement_age = calculate_retirement(st.session_state.profile, st.session_state.goals)
+                first_goal = st.session_state.goals[0]
+                financial_milestone = (first_goal['amount'], first_goal['age'])
+                retirement_age, retirement_money = calculate_retirement(
+                    st.session_state.profile['age'],
+                    st.session_state.profile['monthly_income'],
+                    st.session_state.profile['monthly_expense'],
+                    st.session_state.profile['monthly_investments'],
+                    st.session_state.profile['current_portfolio'],
+                    st.session_state.profile['roi_pct'],
+                    financial_milestone,
+                    st.session_state.settings['life_expectancy'],
+                    st.session_state.settings['inflation_pct'],
+                    st.session_state.settings['emergency_funds_months'],
+                    st.session_state.settings['investment_increase_pct'])
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.success(f"Updated Projected Retirement Age: {retirement_age}")
         else:
@@ -223,15 +236,61 @@ def main():
                 }
                 st.success("Settings updated successfully!")
 
-def calculate_retirement(profile, goals):
-    # Simplified retirement calculation
-    current_age = profile['age']
-    annual_savings = (profile['income'] - profile['expenses'] - profile['loans']) * 12
-    total_goals = sum(goal['amount'] for goal in goals)
-    
-    # Basic compound interest calculation
-    years_to_retire = (total_goals - profile['savings']) / annual_savings
-    return min(current_age + int(years_to_retire), 70)
+def calculate_retirement(
+    age: int,
+    monthly_income: float,
+    monthly_expense: float,
+    monthly_investments: float,
+    current_portfolio: float,
+    roi_pct: float,
+    financial_milestone_goal: tuple,
+    life_expectancy: int,
+    inflation_pct: float,
+    emergency_funds_months: float,
+    investment_increase_pct: float,
+) -> tuple:
+    # Convert percentages to decimal
+    roi = roi_pct / 100.0
+    inflation = inflation_pct / 100.0
+    investment_increase = investment_increase_pct / 100.0
+
+    current_age = age
+    portfolio = current_portfolio
+    monthly_invest = monthly_investments  # Track monthly investments, increasing annually
+
+    milestone_amount, milestone_age = financial_milestone_goal
+
+    for current_age in range(age, life_expectancy + 1):
+        # Check if this is the milestone year and apply deduction
+        if current_age == milestone_age:
+            portfolio -= milestone_amount
+            portfolio = max(portfolio, 0)  # Ensure portfolio doesn't go negative
+
+        # Calculate required portfolio to retire at current_age
+        years_until_retirement = current_age - age
+        annual_expense_at_retirement = 12 * monthly_expense * (1 + inflation) ** years_until_retirement
+        retirement_years = life_expectancy - current_age
+
+        if retirement_years <= 0:
+            required = 0.0
+        else:
+            if roi == inflation:
+                required = annual_expense_at_retirement * retirement_years
+            else:
+                g = (1 + inflation) / (1 + roi)
+                required = annual_expense_at_retirement * (1 - g ** retirement_years) / (1 - g)
+
+        # Check if portfolio meets the required amount to retire
+        if portfolio >= required:
+            return (current_age, portfolio)
+
+        # If not retiring this year, add investments and grow portfolio
+        annual_investment = monthly_invest * 12
+        portfolio += annual_investment
+        portfolio *= (1 + roi)
+        monthly_invest *= (1 + investment_increase)  # Increase investments for next year
+
+    return (life_expectancy, portfolio)
 
 if __name__ == "__main__":
     main()
