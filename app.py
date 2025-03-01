@@ -73,13 +73,13 @@ def main():
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
-                target_age = st.number_input("Target Age", min_value=2023, max_value=2100, value=2030)
+                target_age = st.number_input("Target Age", min_value=st.session_state.profile['age'], max_value=100, value=st.session_state.profile['age'])
                 target_amount = st.number_input("Target Amount ($)", min_value=0, value=50000)
                 
                 if st.form_submit_button("Add Goal"):
                     st.session_state.goals.append({
                         'name': goal_name,
-                        'age': target_year,
+                        'age': target_age,
                         'amount': target_amount
                     })
                     st.success("Goal added!")
