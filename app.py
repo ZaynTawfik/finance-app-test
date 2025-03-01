@@ -27,6 +27,8 @@ def load_yaml(file_path):
         return yaml.safe_load(file)
 agents_config = load_yaml('config/agents.yaml')
 tasks_config = load_yaml('config/tasks.yaml')
+rec_agents_config = load_yaml('config/recommend_agents.yaml')
+rec_tasks_config = load_yaml('config/recommend_tasks.yaml')
 
 def main():
     st.set_page_config(page_title="AI Financial Advisor", layout="wide")
@@ -152,10 +154,28 @@ def main():
         if 'retirement_age' in st.session_state.profile:
             st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
         
-        if 'analysis_result' in st.session_state:
-            st.subheader("Financial Health Analysis")
-            st.write(st.session_state.analysis_result.raw)
+        if st.session_state.profile:
+            #agents
+            financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
+            wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
+            report_generator = Agent(config=rec_agents_config['report_generator'])
             
+            #tasks
+            analyze_finances = Task(
+              config=rec_tasks_config['analyze_finances'],
+              agent=financial_analyst
+            )
+
+            create_recommendations = Task(
+              config=rec_tasks_config['create_recommendations'],
+              agent=wealth_manager
+            )
+
+            generate_report = Task(
+              config=rec_tasks_config['generate_report'],
+              agent=report_generator
+              context=[analyze_finances, create_recommendations]
+            )            
             # Generate final report
             recommend_crew = Crew(
                 agents=[financial_analyst, wealth_manager, report_generator],
@@ -167,7 +187,8 @@ def main():
                 'profile': st.session_state.profile,
                 'goals': st.session_state.goals,
             })
-            
+            st.write(st.session_state.profile)
+            st.write(st.session_state.goals)
             st.subheader("Comprehensive Financial Plan")
             st.markdown(final_report.raw)
 
