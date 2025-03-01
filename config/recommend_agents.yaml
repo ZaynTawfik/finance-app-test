@@ -1,4 +1,4 @@
-financial_analysis_agent:
+financial_analyst:
   role: >
     Senior Financial Analyst
   goal: >
