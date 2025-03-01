@@ -57,12 +57,13 @@ def main():
             with col1:
                 st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=30)
                 st.session_state.profile['income'] = st.number_input("Monthly Income ($)", min_value=0, value=5000)
-                st.session_state.profile['savings'] = st.number_input("Current Savings ($)", min_value=0, value=10000)
+                st.session_state.profile['monthly_expense'] = st.number_input("Monthly Income ($)", min_value=0, value=10000)
+                st.session_state.profile['roi_pct'] = st.number_input("ROI p.a.", min_value=0, value=100)
                 
             with col2:
-                st.session_state.profile['investments'] = st.number_input("Monthly Investments ($)", min_value=0, value=1000)
+                st.session_state.profile['monthly_investments'] = st.number_input("Monthly Investments ($)", min_value=0, value=1000)
                 st.session_state.profile['loans'] = st.number_input("Monthly Loan EMIs ($)", min_value=0, value=500)
-                st.session_state.profile['expenses'] = st.number_input("Monthly Expenses ($)", min_value=0, value=3000)
+                st.session_state.profile['current_portfolio'] = st.number_input("Portfolio ($)", min_value=0, value=3000)
             
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
@@ -93,7 +94,7 @@ def main():
                 financial_milestone = (first_goal['amount'], first_goal['age'])
                 retirement_age, retirement_money = calculate_retirement(
                     st.session_state.profile['age'],
-                    st.session_state.profile['monthly_income'],
+                    st.session_state.profile['income'],
                     st.session_state.profile['monthly_expense'],
                     st.session_state.profile['monthly_investments'],
                     st.session_state.profile['current_portfolio'],
