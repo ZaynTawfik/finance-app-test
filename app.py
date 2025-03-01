@@ -96,7 +96,7 @@ def main():
                     st.session_state.profile['age'],
                     st.session_state.profile['income'],
                     3000,
-                    st.session_state.profile['monthly_investments'],
+                    2000,
                     st.session_state.profile['current_portfolio'],
                     st.session_state.profile['roi_pct'],
                     financial_milestone,
