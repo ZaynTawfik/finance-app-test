@@ -1,1 +1,46 @@
+analyze_finances:
+  description: >
+    Carefully analyse user financial profile delimited by ###, and goals delimited by $$$
+    - Calculate monthly cash flow
+    - Determine net worth
+    - Assess debt-to-income ratio
+    - Project retirement age based on current savings rate
+    - Evaluate financial goals feasibility
+    ### {profile} ### $$$ {goals} $$$
+    
+  expected_output: >
+    Detailed financial health assessment with key metrics.
 
+create_recommendations:
+  description: >
+    Analyse user's financial profile (provided delimited by ###) and financial goals (delimited by $$$) and create personalized recommendations including:
+    - Investment strategy based on risk tolerance
+    - Savings optimization plan
+    - Debt management suggestions
+    - Insurance needs analysis
+    - Tax optimization strategies
+    
+  expected_output: >
+    Actionable financial recommendations with implementation steps.
+
+generate_report :
+  description: >
+    Compile a comprehensive financial report containing:
+    - Executive summary
+    - Financial health dashboard
+    - Retirement projections
+    - Investment recommendations
+    - Visual representations of key metrics
+    - Actionable next steps
+    Format for easy understanding by non-financial users.
+
+    The report should have tables and relevant charts side by side with an
+    appropriate size.
+
+    The report should be formatted for easy consumption by stakeholders,
+    providing valuable insights into the performance of the support system and
+    areas for improvement.
+    
+  expected_output: >
+    Professional financial report in clear markdown format.
+    Don't add '```' or '```markdown' to the report.
