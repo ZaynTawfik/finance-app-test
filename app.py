@@ -94,7 +94,7 @@ def main():
         
         if csv_tool:
             #transactions = pd.read_csv(uploaded_file)
-            st.session_state.transactions = transactions
+            #st.session_state.transactions = transactions
             
             financial_analysis_agent = Agent(config=agents_config['financial_analysis_agent'],tools=[csv_tool])
             budget_planning_agent = Agent(config=agents_config['budget_planning_agent'],tools=[csv_tool])
