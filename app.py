@@ -46,13 +46,9 @@ def main():
             'investment_increase': 10.0
         }
 
-    st.logo("coyn.png")
-    
     st.sidebar.image("coyn.png", caption="Dream Big. We'll handle the math.")
-    
-    # Sidebar navigation
-    st.sidebar.title("Navigation")
     st.sidebar.divider()
+    
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
     
     # Add spacing/separator
