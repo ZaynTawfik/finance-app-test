@@ -270,7 +270,7 @@ def calculate_retirement(
 if __name__ == "__main__":
     main()
 
-'''
+"""
     # Transactions Analysis Page
     elif page == "Transactions Analysis":
         st.header("Transactions Analysis")
@@ -328,4 +328,4 @@ if __name__ == "__main__":
             
             st.subheader("Spending Analysis")
             st.write(result.raw)
-'''
+"""
