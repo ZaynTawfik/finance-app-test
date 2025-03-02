@@ -64,8 +64,7 @@ def main():
             st.markdown('<div class="profile-icon">👤</div>', unsafe_allow_html=True)'''
         
             # Option 2: Using an image from URL
-            st.image("https://img.icons8.com/?size=100&id=20751&format=png&color=000000", 
-            #          width=50)
+            st.image("https://img.icons8.com/?size=100&id=20751&format=png&color=000000", width=50)
     
         # Add profile name to second column
         with col2:
