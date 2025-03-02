@@ -80,7 +80,7 @@ def main():
     
     # Profile Setup Page
     if page == "Profile Setup":
-        st.header("Personal Financial Profile")
+        st.header("Profile")
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
