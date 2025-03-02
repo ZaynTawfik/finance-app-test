@@ -158,9 +158,9 @@ def main():
                 retirement_age, retirement_money = calculate_retirement(
                     st.session_state.profile['age'],
                     st.session_state.profile['income'],
-                    3000,
-                    2000,
-                    100000,
+                    st.session_state.profile['monthly_expense'],
+                    st.session_state.profile['monthly_investments'],
+                    st.session_state.profile['current_portfolio'],
                     st.session_state.profile['roi_pct'],
                     financial_milestone,
                     st.session_state.settings['life_expectancy'],
