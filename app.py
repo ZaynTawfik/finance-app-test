@@ -93,16 +93,7 @@ def main():
                 st.session_state.profile['income'] = st.number_input("Avg. Monthly Income ($)", min_value=0, value=0)
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs ($)", min_value=0, value=0)
                 st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today($)", min_value=0, value=3000)
-            
-            # Calculate savings using current widget values
-            current_income = st.session_state.income if 'income' in st.session_state else 0
-            current_expense = st.session_state.expense if 'expense' in st.session_state else 0
-            current_loans = st.session_state.loans if 'loans' in st.session_state else 0
-            savings = current_income - current_expense - current_loans
-            
-            # Display savings inside form (updates dynamically)
-            st.markdown(f"**This indicates an average monthly savings of ${savings}**")
-            
+                        
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
                
@@ -114,7 +105,7 @@ def main():
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
-                target_age = st.number_input("Target Age", min_value=st.session_state.profile['age'], max_value=100, value=st.session_state.profile['age'])
+                target_age = st.number_input("Target Age", min_value=18, max_value=100, value=18)
                 target_amount = st.number_input("Target Amount ($)", min_value=0, value=50000)
                 
                 if st.form_submit_button("Add Goal"):
