@@ -108,7 +108,7 @@ def main():
                 st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money}")
         else:
             st.info("No goals added yet")
-
+'''
     # Transactions Analysis Page
     elif page == "Transactions Analysis":
         st.header("Transactions Analysis")
@@ -166,7 +166,7 @@ def main():
             
             st.subheader("Spending Analysis")
             st.write(result.raw)
-
+'''
     # Recommendations Page
     elif page == "Recommendations":
         st.header("Personalized Recommendations")
