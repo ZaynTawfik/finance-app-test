@@ -52,7 +52,6 @@ def main():
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
     
     # Add spacing/separator
-    st.markdown("---")
     st.sidebar.divider()
     #sidebar profile
     with st.sidebar:
@@ -82,6 +81,7 @@ def main():
     # Profile Setup Page
     if page == "Profile Setup":
         st.header("Personal Financial Profile")
+        st.markdown("---")
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
@@ -101,6 +101,7 @@ def main():
     # Financial Goals Page
     elif page == "Financial Goals":
         st.header("Financial Goals Planning")
+        st.markdown("---")
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
@@ -142,7 +143,7 @@ def main():
     # Recommendations Page
     elif page == "Recommendations":
         st.header("Personalized Recommendations")
-        
+        st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
             st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
         
@@ -186,6 +187,7 @@ def main():
     # Settings Page
     elif page == "Settings":
         st.header("Financial Assumptions Settings")
+        st.markdown("---")
         with st.form("settings_form"):
             inflation = st.number_input("Inflation Rate (% p.a.)", 
                                       min_value=0.0, max_value=20.0, 
