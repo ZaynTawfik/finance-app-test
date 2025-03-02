@@ -53,6 +53,10 @@ def main():
     
     # Add spacing/separator
     st.sidebar.divider()
+
+    st.write("Your AI-Powered Personal Financial Advisor – Automatically Plan Retirement, Analyze Financial Health, and Optimize Investments with Precision. Get Human-Level Expertise, Tailored Reports, and Actionable Strategies to Secure Your Future.")
+
+    st.sidebar.divider()
     #sidebar profile
     with st.sidebar:
         # Create two columns
@@ -76,7 +80,7 @@ def main():
             """, unsafe_allow_html=True)
             st.markdown('<div class="profile-name">Thoufeek Hussain</div>', unsafe_allow_html=True)
     
-
+    
     
     # Profile Setup Page
     if page == "Profile Setup":
