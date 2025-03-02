@@ -72,7 +72,7 @@ def main():
             st.markdown("""
             <style>
                 .profile-name {
-                    font-size: 1.5rem;
+                    font-size: 1.0rem;
                     font-weight: bold;
                     margin: 0.5rem 0;
                 }
