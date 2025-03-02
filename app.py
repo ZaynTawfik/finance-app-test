@@ -48,12 +48,12 @@ def main():
     
     # Sidebar navigation
     st.sidebar.title("Navigation")
-    st.divider()
+    st.sidebar.divider()
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
     
     # Add spacing/separator
     st.markdown("---")
-    st.divider()
+    st.sidebar.divider()
     #sidebar profile
     with st.sidebar:
         # Create two columns
