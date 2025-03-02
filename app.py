@@ -53,7 +53,7 @@ def main():
     
     # Add spacing/separator
     st.sidebar.divider()
-
+    st.sidebar.write("About Coyn")
     st.sidebar.write("Your AI-Powered Personal Financial Advisor – Automatically Analyze Financial Health, Plan Retirement, and Optimize Money Decisions with Precision. Get Tailored Reports and Actionable Strategies to Secure Your Future.")
 
     st.sidebar.divider()
