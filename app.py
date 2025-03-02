@@ -48,6 +48,8 @@ def main():
 
     st.logo("coyn.png")
     
+    st.sidebar.image("coyn.png", caption="Dream Big. We'll handle the math.")
+    
     # Sidebar navigation
     st.sidebar.title("Navigation")
     st.sidebar.divider()
