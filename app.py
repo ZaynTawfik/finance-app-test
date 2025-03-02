@@ -97,22 +97,22 @@ def main():
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
                 if st.button("Recalculate Retirement Plan"):
-                first_goal = st.session_state.goals[0]
-                financial_milestone = (first_goal['amount'], first_goal['age'])
-                retirement_age, retirement_money = calculate_retirement(
-                    st.session_state.profile['age'],
-                    st.session_state.profile['income'],
-                    3000,
-                    2000,
-                    100000,
-                    st.session_state.profile['roi_pct'],
-                    financial_milestone,
-                    st.session_state.settings['life_expectancy'],
-                    st.session_state.settings['inflation'],
-                    st.session_state.settings['emergency_funds'],
-                    st.session_state.settings['investment_increase'])
-                st.session_state.profile['retirement_age'] = retirement_age
-                st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money}")
+                    first_goal = st.session_state.goals[0]
+                    financial_milestone = (first_goal['amount'], first_goal['age'])
+                    retirement_age, retirement_money = calculate_retirement(
+                        st.session_state.profile['age'],
+                        st.session_state.profile['income'],
+                        3000,
+                        2000,
+                        100000,
+                        st.session_state.profile['roi_pct'],
+                        financial_milestone,
+                        st.session_state.settings['life_expectancy'],
+                        st.session_state.settings['inflation'],
+                        st.session_state.settings['emergency_funds'],
+                        st.session_state.settings['investment_increase'])
+                    st.session_state.profile['retirement_age'] = retirement_age
+                    st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money}")
                 
 
     # Financial Goals Page
