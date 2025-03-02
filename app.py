@@ -51,11 +51,6 @@ def main():
     
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
     
-    # Add spacing/separator
-    st.sidebar.divider()
-    st.sidebar.write("About Coyn")
-    st.sidebar.write("Your AI-Powered Personal Financial Advisor – Automatically Analyze Financial Health, Plan Retirement, and Optimize Money Decisions with Precision. Get Tailored Reports and Actionable Strategies to Secure Your Future.")
-
     # About section in sidebar with styling
     with st.sidebar:
         # Create a container for better spacing control
