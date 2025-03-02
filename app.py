@@ -49,6 +49,9 @@ def main():
     # Sidebar navigation
     st.sidebar.title("Navigation")
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
+    
+    # Add spacing/separator
+    st.markdown("---")
 
     #sidebar profile
     with st.sidebar:
@@ -73,8 +76,6 @@ def main():
             """, unsafe_allow_html=True)
             st.markdown('<div class="profile-name">Thoufeek Hussain</div>', unsafe_allow_html=True)
     
-        # Add additional spacing/separator if needed
-        st.markdown("---")
 
     
     # Profile Setup Page
