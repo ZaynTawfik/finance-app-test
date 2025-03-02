@@ -46,6 +46,10 @@ def main():
             'investment_increase': 10.0
         }
     
+    # Sidebar navigation
+    st.sidebar.title("Navigation")
+    page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
+
     #sidebar profile
     with st.sidebar:
         # Create two columns
@@ -71,11 +75,8 @@ def main():
     
         # Add additional spacing/separator if needed
         st.markdown("---")
-    
-    # Sidebar navigation
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
 
+    
     # Profile Setup Page
     if page == "Profile Setup":
         st.header("Personal Financial Profile")
