@@ -56,6 +56,39 @@ def main():
     st.sidebar.write("About Coyn")
     st.sidebar.write("Your AI-Powered Personal Financial Advisor – Automatically Analyze Financial Health, Plan Retirement, and Optimize Money Decisions with Precision. Get Tailored Reports and Actionable Strategies to Secure Your Future.")
 
+    # About section in sidebar with styling
+    with st.sidebar:
+        # Create a container for better spacing control
+        about_container = st.container()
+    
+        with about_container:
+            # Title with custom styling
+            st.markdown("""
+            <style>
+                .about-title {
+                    font-size: 18px !important;
+                    font-weight: 600 !important;
+                    margin-bottom: 8px !important;
+                }
+                .about-text {
+                    font-size: 14px !important;
+                    line-height: 1.4 !important;
+                    color: #666;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+        
+            # About section content
+            st.markdown('<div class="about-title">About Coyn</div>', unsafe_allow_html=True)
+            st.markdown(
+                '<div class="about-text">'
+                'Your AI-Powered Personal Financial Advisor. Automatically Analyze Financial Health, '
+                'Plan Retirement, and Optimize Money Decisions with Precision. Get Tailored Reports '
+                'and Actionable Strategies to Secure Your Future.'
+                '</div>', 
+                unsafe_allow_html=True
+            )
+    
     st.sidebar.divider()
     #sidebar profile
     with st.sidebar:
