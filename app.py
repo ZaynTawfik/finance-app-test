@@ -46,7 +46,7 @@ def main():
             'investment_increase': 10.0
         }
 
-    st.sidebar.image("coyn.png")
+    st.sidebar.image("logo.png")
     st.sidebar.divider()
     
     page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
