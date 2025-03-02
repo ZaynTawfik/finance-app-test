@@ -88,7 +88,7 @@ def main():
                 st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=30)
                 st.session_state.profile['income'] = st.number_input("Monthly Income ($)", min_value=0, value=5000)
                 st.session_state.profile['monthly_expense'] = st.number_input("Monthly Expenses ($)", min_value=0, value=10000)
-                st.session_state.profile['roi_pct'] = st.number_input("ROI p.a.", min_value=0, value=100)
+                st.session_state.profile['roi_pct'] = st.number_input("ROI p.a.", min_value=0, value=10)
                 
             with col2:
                 st.session_state.profile['monthly_investments'] = st.number_input("Monthly Investments ($)", min_value=0, value=1000)
