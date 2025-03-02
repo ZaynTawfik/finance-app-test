@@ -78,7 +78,7 @@ def main():
                 }
             </style>
             """, unsafe_allow_html=True)
-            st.markdown('<div class="profile-name">John Doe</div>', unsafe_allow_html=True)
+            st.markdown('<div class="profile-name">Thoufeek Hussain</div>', unsafe_allow_html=True)
     
         # Add additional spacing/separator if needed
         st.markdown("---")
