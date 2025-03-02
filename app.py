@@ -54,17 +54,17 @@ def main():
         # Add profile icon to first column (using emoji or image)
         with col1:
             # Option 1: Using an emoji
-            st.markdown("""
+            '''st.markdown("""
             <style>
                 .profile-icon {
                     font-size: 2.5rem;
                 }
             </style>
             """, unsafe_allow_html=True)
-            st.markdown('<div class="profile-icon">👤</div>', unsafe_allow_html=True)
+            st.markdown('<div class="profile-icon">👤</div>', unsafe_allow_html=True)'''
         
             # Option 2: Using an image from URL
-            # st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", 
+            st.image("https://img.icons8.com/?size=100&id=20751&format=png&color=000000", 
             #          width=50)
     
         # Add profile name to second column
