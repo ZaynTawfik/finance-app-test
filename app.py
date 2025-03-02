@@ -94,6 +94,15 @@ def main():
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs ($)", min_value=0, value=0)
                 st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today($)", min_value=0, value=3000)
             
+            # Calculate savings using current widget values
+            current_income = st.session_state.income if 'income' in st.session_state else 0
+            current_expense = st.session_state.expense if 'expense' in st.session_state else 0
+            current_loans = st.session_state.loans if 'loans' in st.session_state else 0
+            savings = current_income - current_expense - current_loans
+            
+            # Display savings inside form (updates dynamically)
+            st.markdown(f"**This indicates an average monthly savings of ${savings}**")
+            
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
                
