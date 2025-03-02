@@ -55,7 +55,7 @@ def main():
         with col1:
         
             # Profile Icon
-            st.image("https://img.icons8.com/?size=100&id=20751&format=png&color=000000", width=50)
+            st.image("https://img.icons8.com/?size=100&id=20751&format=png&color=000000", width=70)
     
         # Add profile name to second column
         with col2:
