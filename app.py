@@ -45,6 +45,8 @@ def main():
             'emergency_funds': 24,
             'investment_increase': 10.0
         }
+
+    st.logo("coyn.png")
     
     # Sidebar navigation
     st.sidebar.title("Navigation")
