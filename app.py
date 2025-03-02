@@ -48,41 +48,40 @@ def main():
     
     #sidebar profile
     with st.sidebar:
-    # Create two columns
-    col1, col2 = st.columns([1, 3])
+        # Create two columns
+        col1, col2 = st.columns([1, 3])
     
-    # Add profile icon to first column (using emoji or image)
-    with col1:
-        # Option 1: Using an emoji
-        st.markdown("""
-        <style>
-            .profile-icon {
-                font-size: 2.5rem;
-            }
-        </style>
-        """, unsafe_allow_html=True)
-        st.markdown('<div class="profile-icon">👤</div>', unsafe_allow_html=True)
+        # Add profile icon to first column (using emoji or image)
+        with col1:
+            # Option 1: Using an emoji
+            st.markdown("""
+            <style>
+                .profile-icon {
+                    font-size: 2.5rem;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+            st.markdown('<div class="profile-icon">👤</div>', unsafe_allow_html=True)
         
-        # Option 2: Using an image from URL
-        # st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", 
-        #          width=50)
+            # Option 2: Using an image from URL
+            # st.image("https://cdn-icons-png.flaticon.com/512/3135/3135715.png", 
+            #          width=50)
     
-    # Add profile name to second column
-    with col2:
-        st.markdown("""
-        <style>
-            .profile-name {
-                font-size: 1.5rem;
-                font-weight: bold;
-                margin: 0.5rem 0;
-            }
-        </style>
-        """, unsafe_allow_html=True)
-        st.markdown('<div class="profile-name">John Doe</div>', unsafe_allow_html=True)
+        # Add profile name to second column
+        with col2:
+            st.markdown("""
+            <style>
+                .profile-name {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    margin: 0.5rem 0;
+                }
+            </style>
+            """, unsafe_allow_html=True)
+            st.markdown('<div class="profile-name">John Doe</div>', unsafe_allow_html=True)
     
-    # Add additional spacing/separator if needed
-    st.markdown("---")
-
+        # Add additional spacing/separator if needed
+        st.markdown("---")
     
     # Sidebar navigation
     st.sidebar.title("Navigation")
