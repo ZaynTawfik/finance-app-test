@@ -64,7 +64,6 @@ def main():
                 .profile-name {
                     font-size: 1.0rem;
                     font-weight: bold;
-                    margin: 0.5rem 0;
                 }
             </style>
             """, unsafe_allow_html=True)
