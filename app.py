@@ -81,11 +81,10 @@ def main():
     # Profile Setup Page
     if page == "Profile Setup":
         st.header("Personal Financial Profile")
-        st.markdown("---")
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
-                st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=30)
+                st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=18)
                 st.session_state.profile['income'] = st.number_input("Monthly Income ($)", min_value=0, value=5000)
                 st.session_state.profile['monthly_expense'] = st.number_input("Monthly Expenses ($)", min_value=0, value=10000)
                 st.session_state.profile['roi_pct'] = st.number_input("ROI p.a.", min_value=0, value=10)
@@ -97,6 +96,24 @@ def main():
             
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
+                if st.button("Recalculate Retirement Plan"):
+                first_goal = st.session_state.goals[0]
+                financial_milestone = (first_goal['amount'], first_goal['age'])
+                retirement_age, retirement_money = calculate_retirement(
+                    st.session_state.profile['age'],
+                    st.session_state.profile['income'],
+                    3000,
+                    2000,
+                    100000,
+                    st.session_state.profile['roi_pct'],
+                    financial_milestone,
+                    st.session_state.settings['life_expectancy'],
+                    st.session_state.settings['inflation'],
+                    st.session_state.settings['emergency_funds'],
+                    st.session_state.settings['investment_increase'])
+                st.session_state.profile['retirement_age'] = retirement_age
+                st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money}")
+                
 
     # Financial Goals Page
     elif page == "Financial Goals":
