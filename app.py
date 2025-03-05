@@ -126,14 +126,16 @@ def main():
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs ($)", min_value=0, value=0)
                 st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today($)", min_value=0, value=3000)
 
-            st.write("Investments")
+            st.write("Current Investment Portfolio")
             
             col3, col4 = st.columns(2)
             
             with col3:
                 st.session_state.profile['Equity'] = st.number_input("Equity($)", min_value=0, value=3000)
+                st.session_state.profile['Crypto'] = st.number_input("Crypto($)", min_value=0, value=3000)
             with col4:
                 st.session_state.profile['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
+                st.session_state.profile['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
                
