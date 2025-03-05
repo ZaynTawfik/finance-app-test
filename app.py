@@ -126,8 +126,10 @@ def main():
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs ($)", min_value=0, value=0)
                 st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today($)", min_value=0, value=3000)
 
-            col3, col4 = st.columns(2)
             st.write("Investments")
+            
+            col3, col4 = st.columns(2)
+            
             with col3:
                 st.session_state.profile['Equity'] = st.number_input("Equity($)", min_value=0, value=3000)
             with col4:
