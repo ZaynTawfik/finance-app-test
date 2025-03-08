@@ -143,7 +143,7 @@ def main():
                 st.success("Profile updated successfully!")
 
             st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
-            st.write("Current Portfolio:" st.session_state.investments['current_portfolio'] )   
+            st.write("Current Portfolio:", st.session_state.investments['current_portfolio'] )   
 
     # Financial Goals Page
     elif page == "Financial Goals":
