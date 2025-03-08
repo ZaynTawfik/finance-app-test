@@ -144,7 +144,7 @@ def main():
                 st.session_state.investments['commodity'] = st.number_input("Commodity", min_value=0, value=3000)
             with col4:
                 st.session_state.investments['Bonds'] = st.number_input("Bonds", min_value=0, value=3000)
-                st.session_state.investments['real_estate'] = st.number_input("Real Estate, min_value=0, value=3000)
+                st.session_state.investments['real_estate'] = st.number_input("Real Estate", min_value=0, value=3000)
                 st.session_state.investments['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
