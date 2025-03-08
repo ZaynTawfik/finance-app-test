@@ -127,7 +127,6 @@ def main():
                 st.session_state.profile['country'] = st.number_input("Country", min_value=0, value=0)
                 st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=0)
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs", min_value=0, value=0)
-                st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today", min_value=0, value=3000)
 
             st.write("Current Investment Portfolio")
             
@@ -144,7 +143,7 @@ def main():
                 st.success("Profile updated successfully!")
 
             st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
-            st.write(st.session_state.investments)   
+            st.write("Current Portfolio:" st.session_state.investments['current_portfolio'] )   
 
     # Financial Goals Page
     elif page == "Financial Goals":
