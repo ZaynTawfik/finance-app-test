@@ -115,6 +115,13 @@ def main():
     # Profile Setup Page
     if page == "Profile Setup":
         st.header("Profile")
+        COUNTRIES = [
+        "India",
+        "United States (USA)",
+        "United Kingdom (UK)",
+        "United Arab Emirates (UAE)",
+        "Singapore"
+        ]
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
@@ -123,7 +130,7 @@ def main():
                 st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments", min_value=0, value=0)
                 
             with col2:
-                st.session_state.profile['country'] = st.number_input("Country", min_value=0, value=0)
+                st.session_state.profile['country'] = st.selectbox("Country", options=COUNTRIES, index=0)
                 st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=0)
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs", min_value=0, value=0)
 
