@@ -141,10 +141,10 @@ def main():
                 st.session_state.investments['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
                 st.session_state.investments['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
             if st.form_submit_button("Save Profile"):
-                st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
-                st.write(st.session_state.investments)
                 st.success("Profile updated successfully!")
-               
+
+            st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
+            st.write(st.session_state.investments)   
 
     # Financial Goals Page
     elif page == "Financial Goals":
