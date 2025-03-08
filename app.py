@@ -136,7 +136,7 @@ def main():
             with col3:
                 st.session_state.investments['Equity'] = st.number_input("Equity($)", min_value=0, value=3000)
                 st.session_state.investments['Crypto'] = st.number_input("Crypto($)", min_value=0, value=3000)
-                st.session_state.investments['commodity'] = st.number_input("Crypto($)", min_value=0, value=3000)
+                st.session_state.investments['commodity'] = st.number_input("Commodity($)", min_value=0, value=3000)
             with col4:
                 st.session_state.investments['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
                 st.session_state.investments['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
