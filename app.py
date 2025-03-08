@@ -38,6 +38,8 @@ def main():
         st.session_state.goals = []
     if 'profile' not in st.session_state:
         st.session_state.profile = {}
+    if 'investments' not in st.session_state:
+        st.session_state.investments = {}
     if 'settings' not in st.session_state:
         st.session_state.settings = {
             'inflation': 6.0,
@@ -117,26 +119,30 @@ def main():
             col1, col2 = st.columns(2)
             with col1:
                 st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=18)
-                st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses ($)", min_value=0, value=0)
-                st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments ($)", min_value=0, value=0)
+                st.session_state.profile['income'] = st.number_input("Avg. Monthly Income", min_value=0, value=0)
+                st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments", min_value=0, value=0)
                 st.session_state.profile['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
                 
             with col2:
-                st.session_state.profile['income'] = st.number_input("Avg. Monthly Income ($)", min_value=0, value=0)
-                st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs ($)", min_value=0, value=0)
-                st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today($)", min_value=0, value=3000)
+                st.session_state.profile['country'] = st.number_input("Country", min_value=0, value=0)
+                st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=0)
+                st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs", min_value=0, value=0)
+                st.session_state.profile['current_portfolio'] = st.number_input("Portfolio as of today", min_value=0, value=3000)
 
             st.write("Current Investment Portfolio")
             
             col3, col4 = st.columns(2)
             
             with col3:
-                st.session_state.profile['Equity'] = st.number_input("Equity($)", min_value=0, value=3000)
-                st.session_state.profile['Crypto'] = st.number_input("Crypto($)", min_value=0, value=3000)
+                st.session_state.investments['Equity'] = st.number_input("Equity($)", min_value=0, value=3000)
+                st.session_state.investments['Crypto'] = st.number_input("Crypto($)", min_value=0, value=3000)
+                st.session_state.investments['commodity'] = st.number_input("Crypto($)", min_value=0, value=3000)
             with col4:
-                st.session_state.profile['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
-                st.session_state.profile['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
+                st.session_state.investments['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
+                st.session_state.investments['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
             if st.form_submit_button("Save Profile"):
+                st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
+                st.write(st.session_state.investments)
                 st.success("Profile updated successfully!")
                
 
