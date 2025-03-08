@@ -244,7 +244,7 @@ def main():
                 'settings' : st.session_state.settings,
                 'retirement_age' : retirement_age,
                 'retirement_money' : retirement_money,
-                'country': st.session_state.profile['country'}
+                'country': st.session_state.profile['country'],
             })
             st.subheader("Comprehensive Financial Plan")
             st.markdown(final_report.raw)
