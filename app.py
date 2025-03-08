@@ -187,7 +187,7 @@ def main():
                     st.session_state.profile['monthly_expense'],
                     st.session_state.profile['monthly_investments'],
                     st.session_state.investments['current_portfolio'],
-                    st.session_state.profile['roi_pct'],
+                    st.session_state.investments['roi_pct'],
                     financial_milestone,
                     st.session_state.settings['life_expectancy'],
                     st.session_state.settings['inflation'],
