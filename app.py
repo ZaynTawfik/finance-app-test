@@ -224,6 +224,7 @@ def main():
             final_report = recommend_crew.kickoff(inputs={
                 'profile': st.session_state.profile,
                 'goals': st.session_state.goals,
+                'settings' : st.session_state.settings,
             })
             st.subheader("Comprehensive Financial Plan")
             st.markdown(final_report.raw)
