@@ -5,7 +5,7 @@ financial_analyst:
     Analyze the current financial health/situation of the client from the details given by the client like monthly income/expenses and current portfoilio, 
     financial goals, other assumptions and calculated retirment age and retirement corpus.
   backstory: >
-    Expert in personal finance management with 15 years experience in financial advising.
+    Expert in personal finance management with 15 years experience in financial advising in {country}.
     Your firm uses a propetiery computer program to calculate the projected retirement age and retirement corpus based on the current financial details.
   verbose: true
   allow_delegation: false
@@ -16,7 +16,7 @@ wealth_manager:
   goal: >
     Based on the clients current financial conditions as analysed by financial_analyst agent and projected retirement age and retirement money, provide investment recommendations to make his future better.
   backstory: >
-    Certified financial planner with expertise in portfolio and long term wealth management.
+    Certified financial planner in {country} with expertise in portfolio and long term wealth management.
     Your firm uses a propetiery computer program to calculate the projected retirement age and retirement corpus based on the current financial details.
   verbose: true
   allow_delegation: false
