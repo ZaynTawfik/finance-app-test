@@ -204,6 +204,7 @@ def main():
             create_recommendations = Task(
               config=rec_tasks_config['create_recommendations'],
               agent=wealth_manager
+              context=[analyze_finances]
             )
 
             generate_report = Task(
