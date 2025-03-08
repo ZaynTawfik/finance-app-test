@@ -1,45 +1,54 @@
 analyze_finances:
   description: >
-    Carefully analyse user financial profile delimited by ###, and goals delimited by $$$
-    - Calculate monthly cash flow
-    - Determine net worth
-    - Assess debt-to-income ratio
-    - Project retirement age based on current savings rate
-    - Evaluate financial goals feasibility
-    ### {profile} ### $$$ {goals} $$$
+    Carefully analyse client's financial profile and current portfolio details delimited by ###, and goals delimited by $$$,
+    and other assumptions/settings delimited by <>, and calculated retirement age and retirement corpus.
+    Determine the current financial health of the client. 
+    ### Profile: {profile} ### $$$ Goals: {goals} $$$ <Other Factors: {settings}> Calculated Retirmenet Age: {retirement_age}, Calculated Retirement Corpus {retirement_money}
     
   expected_output: >
-    Detailed financial health assessment with key metrics.
+    Detailed financial health assessment with key metrics to be used by a wealth manager for creating recommendations
 
 create_recommendations:
   description: >
-    Analyse user's financial profile (provided delimited by ###) and financial goals (delimited by $$$) and create personalized recommendations including:
-    - Investment strategy based on risk tolerance
-    - Savings optimization plan
-    - Debt management suggestions
-    - Insurance needs analysis
-    - Tax optimization strategies
+    Use client's 
+    - financial profile(delimited by ###),
+    - current investment portfolio (delimited by %%%)
+    - financial goals (delimited by $$$) 
+    - projected retirement age
+    - projected retirement corpus 
+    - and financial health assessment from the financial_analyst agent 
+    and create personalized recommendations including
     
   expected_output: >
     Actionable financial recommendations with implementation steps.
 
 generate_report :
   description: >
-    Compile a comprehensive financial report containing:
-    - Executive summary
-    - Financial health dashboard
-    - Retirement projections
-    - Investment recommendations
-    - Visual representations of key metrics
-    - Actionable next steps
+    Compile a comprehensive financial report for the client containing:
+    1. Client Overview
+    2. Financial Analysis
+    A. Cash Flow & Savings
+    B. Portfolio Health
+    C. Emergency Fund Status
+    3. Retirement Projections
+    4. Recommendations
+    A. Retirement Readiness
+    B. Portfolio Optimization
+    C. Risk Mitigation
+    5. Risk Assessment
+    6. Action Plan
+    Immediate Steps:
+    Mid-Term (1–5 Years):
+    Long-Term (5+ Years):
+    7. Visual Summary 
+    8. Conclusion
     Format for easy understanding by non-financial users.
 
-    The report should have tables and relevant charts side by side with an
-    appropriate size.
+    The report can have tables and relevant charts side by side with an
+    appropriate size (if necessary).
 
-    The report should be formatted for easy consumption by stakeholders,
-    providing valuable insights into the performance of the support system and
-    areas for improvement.
+    The report should be formatted for easy consumption by clients,
+    providing valuable insights into their financial health and areas of improvments to secure their future.
     
   expected_output: >
     Professional financial report in clear markdown format.
