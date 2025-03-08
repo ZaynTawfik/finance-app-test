@@ -188,7 +188,9 @@ def main():
         st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
             st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
-        
+        st.write(st.session_state.profile)
+        st.write(st.session_state.goals)
+            
         if st.session_state.profile:
             #agents
             financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
@@ -223,8 +225,6 @@ def main():
                 'profile': st.session_state.profile,
                 'goals': st.session_state.goals,
             })
-            st.write(st.session_state.profile)
-            st.write(st.session_state.goals)
             st.subheader("Comprehensive Financial Plan")
             st.markdown(final_report.raw)
     # Settings Page
