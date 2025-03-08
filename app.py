@@ -121,7 +121,6 @@ def main():
                 st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=18)
                 st.session_state.profile['income'] = st.number_input("Avg. Monthly Income", min_value=0, value=0)
                 st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments", min_value=0, value=0)
-                st.session_state.profile['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
                 
             with col2:
                 st.session_state.profile['country'] = st.number_input("Country", min_value=0, value=0)
@@ -139,11 +138,16 @@ def main():
             with col4:
                 st.session_state.investments['Bonds'] = st.number_input("Bonds($)", min_value=0, value=3000)
                 st.session_state.investments['real_estate'] = st.number_input("Real Estate($)", min_value=0, value=3000)
+                st.session_state.investments['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
-
+            
             st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
-            st.write("Current Portfolio:", st.session_state.investments['current_portfolio'] )   
+            col5, col6, col7 = st.columns(3)
+            with col5:
+                st.write("Current Portfolio:", st.session_state.investments['current_portfolio'] )  
+            with col6:
+                st.write("Monthly Savings:", st.session_state.profile['income']-st.session_state.profile['monthly_expense']-st.session_state.profile['loans'])
 
     # Financial Goals Page
     elif page == "Financial Goals":
