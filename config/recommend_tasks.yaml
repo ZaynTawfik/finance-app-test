@@ -10,17 +10,17 @@ analyze_finances:
 
 create_recommendations:
   description: >
-    Use client's 
+    Use client's provided details including:
     - financial profile(delimited by ###),
     - current investment portfolio (delimited by %%%)
     - financial goals (delimited by $$$) 
     - projected retirement age
     - projected retirement corpus 
     - and financial health assessment from the financial_analyst agent 
-    and create personalized recommendations including
+    and create personalized recommendations for the client.
     
   expected_output: >
-    Actionable financial recommendations with implementation steps.
+    Actionable financial recommendations with implementation steps to be included in the financial report.
 
 generate_report :
   description: >
