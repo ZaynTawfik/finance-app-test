@@ -196,6 +196,8 @@ def main():
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.session_state.profile['retirement_money'] = retirement_money
                 st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money:,.2f}")
+                if st.button("Go to Recommendations"):
+                    page = "Recommendations"
         else:
             st.info("No goals added yet")
             
