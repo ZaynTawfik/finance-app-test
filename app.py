@@ -125,13 +125,13 @@ def main():
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
-                st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=18)
-                st.session_state.profile['income'] = st.number_input("Avg. Monthly Income", min_value=0, value=0)
-                st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments", min_value=0, value=0)
+                st.session_state.profile['age'] = st.number_input("Current Age", min_value=18, max_value=100, value=25)
+                st.session_state.profile['income'] = st.number_input("Avg. Monthly Income", min_value=0, value=25000)
+                st.session_state.profile['monthly_investments'] = st.number_input("Avg. Monthly Investments", min_value=0, value=5000)
                 
             with col2:
                 st.session_state.profile['country'] = st.selectbox("Country", options=COUNTRIES, index=0)
-                st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=0)
+                st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=13000)
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs", min_value=0, value=0)
 
             st.write("Current Investment Portfolio")
@@ -139,12 +139,12 @@ def main():
             col3, col4 = st.columns(2)
             
             with col3:
-                st.session_state.investments['Equity'] = st.number_input("Equity", min_value=0, value=3000)
-                st.session_state.investments['Crypto'] = st.number_input("Crypto", min_value=0, value=3000)
-                st.session_state.investments['commodity'] = st.number_input("Commodity", min_value=0, value=3000)
+                st.session_state.investments['Equity'] = st.number_input("Equity", min_value=0, value=125000)
+                st.session_state.investments['Crypto'] = st.number_input("Crypto", min_value=0, value=10000)
+                st.session_state.investments['commodity'] = st.number_input("Commodity", min_value=0, value=15000)
             with col4:
-                st.session_state.investments['Bonds'] = st.number_input("Bonds", min_value=0, value=3000)
-                st.session_state.investments['real_estate'] = st.number_input("Real Estate", min_value=0, value=3000)
+                st.session_state.investments['Bonds'] = st.number_input("Bonds", min_value=0, value=15000)
+                st.session_state.investments['real_estate'] = st.number_input("Real Estate", min_value=0, value=100000)
                 st.session_state.investments['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
             if st.form_submit_button("Save Profile"):
                 st.success("Profile updated successfully!")
