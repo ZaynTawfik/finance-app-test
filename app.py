@@ -224,7 +224,7 @@ def main():
         st.text("")
         st.text("")
         if st.session_state.profile:
-            if st.button("Get Plan & Recommendations", type="primary"):
+            if st.button(":sparkles: Get Plan & Recommendations", type="primary"):
                 #agents
                 financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
                 wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
@@ -265,7 +265,7 @@ def main():
                 st.subheader("Comprehensive Financial Plan")
                 st.markdown(final_report.raw)
     # Settings Page
-    elif page == "Settings":
+    elif page == ":gear: Settings":
         st.header("Financial Assumptions Settings")
         st.markdown("---")
         with st.form("settings_form"):
