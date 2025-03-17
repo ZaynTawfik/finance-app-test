@@ -13,8 +13,8 @@ import yaml
 import warnings
 warnings.filterwarnings('ignore')
 
-from crewai_tools import FileReadTool
-csv_tool = FileReadTool(file_path='./transactions.csv')
+#from crewai_tools import FileReadTool
+#csv_tool = FileReadTool(file_path='./transactions.csv')
 
 # Load environment variables
 load_env()
