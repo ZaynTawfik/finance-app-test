@@ -181,7 +181,7 @@ def main():
             st.dataframe(goals_df)
             st.text("")
             st.text("")
-            if st.button("Calculate Retirement"):
+            if st.button("Calculate Retirement",type="primary"):
                 first_goal = st.session_state.goals[0]
                 financial_milestone = (first_goal['amount'], first_goal['age'])
                 retirement_age, retirement_money = calculate_retirement(
@@ -198,10 +198,7 @@ def main():
                     st.session_state.settings['investment_increase'])
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.session_state.profile['retirement_money'] = retirement_money
-                st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money:,.2f}")
-                if 'retirement_age' in st.session_state.profile:
-                    if st.button("Go to Recommendations"):
-                        st.session_state.menu_radio = "Recommendations"
+                st.success(f"Current Projected Retirement is at age {retirement_age} with {retirement_money:,.2f}")
         else:
             st.info("No goals added yet")
             
