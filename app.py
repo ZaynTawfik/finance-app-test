@@ -212,45 +212,46 @@ def main():
         st.write(st.session_state.goals)
             
         if st.session_state.profile:
-            #agents
-            financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
-            wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
-            report_generator = Agent(config=rec_agents_config['report_generator'])
+            if st.button("Get Plan & Recommendations"):
+                #agents
+                financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
+                wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
+                report_generator = Agent(config=rec_agents_config['report_generator'])
             
-            #tasks
-            analyze_finances = Task(
-              config=rec_tasks_config['analyze_finances'],
-              agent=financial_analyst
-            )
+                #tasks
+                analyze_finances = Task(
+                  config=rec_tasks_config['analyze_finances'],
+                  agent=financial_analyst
+                )
 
-            create_recommendations = Task(
-              config=rec_tasks_config['create_recommendations'],
-              agent=wealth_manager,
-              context=[analyze_finances]
-            )
+                create_recommendations = Task(
+                  config=rec_tasks_config['create_recommendations'],
+                  agent=wealth_manager,
+                  context=[analyze_finances]
+                )
 
-            generate_report = Task(
-              config=rec_tasks_config['generate_report'],
-              agent=report_generator,
-              context=[analyze_finances, create_recommendations]
-            )            
-            # Generate final report
-            recommend_crew = Crew(
-                agents=[financial_analyst, wealth_manager, report_generator],
-                tasks=[analyze_finances, create_recommendations, generate_report],
-                verbose=True
-            )
+                generate_report = Task(
+                  config=rec_tasks_config['generate_report'],
+                  agent=report_generator,
+                  context=[analyze_finances, create_recommendations]
+                )            
+                # Generate final report
+                recommend_crew = Crew(
+                    agents=[financial_analyst, wealth_manager, report_generator],
+                    tasks=[analyze_finances, create_recommendations, generate_report],
+                    verbose=True
+                )
             
-            final_report = recommend_crew.kickoff(inputs={
-                'profile': st.session_state.profile,
-                'goals': st.session_state.goals,
-                'settings' : st.session_state.settings,
-                'retirement_age' : st.session_state.profile['retirement_age'],
-                'retirement_money' : st.session_state.profile['retirement_money'],
-                'country': st.session_state.profile['country'],
-            })
-            st.subheader("Comprehensive Financial Plan")
-            st.markdown(final_report.raw)
+                final_report = recommend_crew.kickoff(inputs={
+                    'profile': st.session_state.profile,
+                    'goals': st.session_state.goals,
+                    'settings' : st.session_state.settings,
+                    'retirement_age' : st.session_state.profile['retirement_age'],
+                    'retirement_money' : st.session_state.profile['retirement_money'],
+                    'country': st.session_state.profile['country'],
+                })
+                st.subheader("Comprehensive Financial Plan")
+                st.markdown(final_report.raw)
     # Settings Page
     elif page == "Settings":
         st.header("Financial Assumptions Settings")
