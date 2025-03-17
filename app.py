@@ -159,6 +159,7 @@ def main():
     # Financial Goals Page
     elif page == "Financial Goals":
         st.header("Financial Goals Planning")
+        st.write("/n")
         #st.markdown("---")
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
