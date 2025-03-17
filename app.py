@@ -204,7 +204,7 @@ def main():
             
     # Recommendations Page
     elif page == "Recommendations":
-        st.header("Personalized Recommendations")
+        st.header("Your Personalized Action Plan")
         st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
             st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
