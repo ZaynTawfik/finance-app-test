@@ -167,7 +167,7 @@ def main():
                 target_age = st.number_input("Target Age", min_value=18, max_value=100, value=28)
                 target_amount = st.number_input("Target Amount", min_value=0, value=0)
                 
-                if st.form_submit_button("Add Goal"):
+                if st.form_submit_button("Add Goal",type="tertiary):
                     st.session_state.goals.append({
                         'name': goal_name,
                         'age': target_age,
@@ -181,7 +181,7 @@ def main():
             st.dataframe(goals_df)
             st.text("")
             st.text("")
-            if st.button("Calculate Retirement",type="primary"):
+            if st.button("Calculate Retirement"):
                 first_goal = st.session_state.goals[0]
                 financial_milestone = (first_goal['amount'], first_goal['age'])
                 retirement_age, retirement_money = calculate_retirement(
@@ -212,7 +212,7 @@ def main():
         st.write(st.session_state.goals)
             
         if st.session_state.profile:
-            if st.button("Get Plan & Recommendations"):
+            if st.button("Get Plan & Recommendations", type="primary"):
                 #agents
                 financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
                 wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
