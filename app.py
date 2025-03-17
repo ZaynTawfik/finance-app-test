@@ -179,6 +179,8 @@ def main():
         goals_df = pd.DataFrame(st.session_state.goals)
         if not goals_df.empty:
             st.dataframe(goals_df)
+            st.text("")
+            st.text("")
             if st.button("Calculate Retirement"):
                 first_goal = st.session_state.goals[0]
                 financial_milestone = (first_goal['amount'], first_goal['age'])
