@@ -51,7 +51,7 @@ def main():
     st.sidebar.image("logo.png",caption="Dream Big. We'll handle the math.")
     st.sidebar.divider()
     
-    page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"])
+    page = st.sidebar.radio("Menu", ["Profile Setup", "Financial Goals", "Recommendations","Settings"],key='menu_radio')
     
     # About section in sidebar with styling
     with st.sidebar:
@@ -196,8 +196,9 @@ def main():
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.session_state.profile['retirement_money'] = retirement_money
                 st.success(f"Updated Projected Retirement Age: {retirement_age} with {retirement_money:,.2f}")
-                if st.button("Go to Recommendations"):
-                    page = "Recommendations"
+                if 'retirement_age' in st.session_state.profile:
+                    if st.button("Go to Recommendations"):
+                        st.session_state.menu_radio = "Recommendations"
         else:
             st.info("No goals added yet")
             
