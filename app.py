@@ -157,7 +157,7 @@ def main():
                 st.write("Monthly Savings:", st.session_state.profile['income']-st.session_state.profile['monthly_expense']-st.session_state.profile['loans'])
 
     # Financial Goals Page
-    elif page == "Financial Goals":
+    elif page == "🎯 Financial Goals":
         st.header("Financial Goals Planning")
         st.markdown("---")
         with st.expander("Add New Goal"):
