@@ -253,7 +253,7 @@ def main():
                 st.subheader("Comprehensive Financial Plan")
                 st.markdown(final_report.raw)
     # Settings Page
-    elif page == "Settings":
+    elif page == "⚙️ Settings":
         st.header("Financial Assumptions Settings")
         st.markdown("---")
         with st.form("settings_form"):
