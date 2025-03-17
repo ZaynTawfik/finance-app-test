@@ -168,7 +168,7 @@ def main():
 
     # Financial Goals Page
     elif page == "Financial Goals":
-        st.header("Financial Goals Planning")
+        st.header("🎯 Financial Goals")
         st.text("")
         #st.markdown("---")
         with st.expander("Add New Goal"):
