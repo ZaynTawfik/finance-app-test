@@ -220,7 +220,7 @@ def main():
             st.caption(f"Your current projected retirement is at age {st.session_state.profile['retirement_age']} with {st.session_state.profile['currency']} {st.session_state.profile['retirement_money']:,.2f}")
             st.text(st.session_state.profile['retirement_age'])
             st.caption(f"with")
-            st.text(st.session_state.profile['retirement_money']:,.2f)
+            st.text(f"{st.session_state.profile['retirement_money']:,.2f}")
         st.text("")
         st.text("")
         st.text("")
