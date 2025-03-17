@@ -217,9 +217,9 @@ def main():
         st.header("Your Personalized Action Plan")
         st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
-            st.caption(f"Your current projected retirement is at age {st.session_state.profile['retirement_age']} with {st.session_state.profile['currency']} {st.session_state.profile['retirement_money']:,.2f}")
+            st.caption(f"Your current projected retirement is at age")
             st.subheader(st.session_state.profile['retirement_age'])
-            st.text(f"with {st.session_state.profile['retirement_money']:,.2f}")
+            st.text(f"with {st.session_state.profile['currency']} {st.session_state.profile['retirement_money']:,.2f}")
         st.text("")
         st.text("")
         st.text("")
