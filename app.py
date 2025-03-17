@@ -114,7 +114,7 @@ def main():
     
     # Profile Setup Page
     if page == "Profile Setup":
-        st.header(":gear: Profile")
+        st.header("👤 Profile")
         COUNTRIES = [
         "India",
         "United States (USA)",
