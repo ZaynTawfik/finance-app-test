@@ -210,78 +210,74 @@ def main():
             st.subheader(f"Projected Retirement Age: {st.session_state.profile['retirement_age']}")
 
         # In the Recommendations page section
-elif page == "Recommendations":
-    st.header("Personalized Recommendations")
-    st.markdown("---")
+
     
-    # Retirement Projection Display
-    if 'retirement_age' in st.session_state.profile and 'retirement_money' in st.session_state.profile:
-        st.markdown("""
-        <style>
-            .retirement-container {
-                background: #f8f9fa;
-                border-radius: 10px;
-                padding: 25px;
-                margin: 20px 0;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .retirement-header {
-                color: #2c3e50;
-                font-size: 1.4rem;
-                font-weight: 600;
-                margin-bottom: 15px;
-            }
-            .stats-container {
-                display: flex;
-                gap: 30px;
-                justify-content: center;
-            }
-            .stat-box {
-                background: white;
-                padding: 20px 30px;
-                border-radius: 8px;
-                text-align: center;
-                min-width: 200px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            }
-            .stat-value {
-                color: #3498db;
-                font-size: 1.8rem;
-                font-weight: 700;
-                margin: 10px 0;
-            }
-            .stat-label {
-                color: #7f8c8d;
-                font-size: 1rem;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-        </style>
+        # Retirement Projection Display
+        if 'retirement_age' in st.session_state.profile and 'retirement_money' in st.session_state.profile:
+            st.markdown("""
+            <style>
+                .retirement-container {
+                    background: #f8f9fa;
+                    border-radius: 10px;
+                    padding: 25px;
+                    margin: 20px 0;
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                }
+                .retirement-header {
+                    color: #2c3e50;
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                    margin-bottom: 15px;
+                }
+                .stats-container {
+                    display: flex;
+                    gap: 30px;
+                    justify-content: center;
+                }
+                .stat-box {
+                    background: white;
+                    padding: 20px 30px;
+                    border-radius: 8px;
+                    text-align: center;
+                    min-width: 200px;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                }
+                .stat-value {
+                    color: #3498db;
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    margin: 10px 0;
+                }
+                .stat-label {
+                    color: #7f8c8d;
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+            </style>
         
-        <div class="retirement-container">
-            <div class="retirement-header">
-                <i class="fas fa-chart-line" style="margin-right: 10px;"></i>
-                Retirement Projection
-            </div>
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="stat-value">{retirement_age}</div>
-                    <div class="stat-label">Years Old</div>
+            <div class="retirement-container">
+                <div class="retirement-header">
+                    <i class="fas fa-chart-line" style="margin-right: 10px;"></i>
+                    Retirement Projection
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value">₹{retirement_money:,.0f}</div>
-                    <div class="stat-label">Projected Savings</div>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-value">{retirement_age}</div>
+                        <div class="stat-label">Years Old</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">₹{retirement_money:,.0f}</div>
+                        <div class="stat-label">Projected Savings</div>
+                    </div>
                 </div>
             </div>
-        </div>
-        """.format(
-            retirement_age=st.session_state.profile['retirement_age'],
-            retirement_money=st.session_state.profile['retirement_money']
-        ), unsafe_allow_html=True)
+            """.format(
+                retirement_age=st.session_state.profile['retirement_age'],
+                retirement_money=st.session_state.profile['retirement_money']
+            ), unsafe_allow_html=True)
         
         st.markdown("---")  # Section break before the button
-    
-    # Rest of the recommendations page code...
         #st.write(st.session_state.profile)
         #st.write(st.session_state.goals)
             
