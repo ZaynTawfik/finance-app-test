@@ -159,7 +159,7 @@ def main():
     # Financial Goals Page
     elif page == "Financial Goals":
         st.header("Financial Goals Planning")
-        st.markdown("---")
+        #st.markdown("---")
         with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
