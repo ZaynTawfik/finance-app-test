@@ -334,5 +334,4 @@ def calculate_retirement(
     return (life_expectancy, portfolio)
 
 if __name__ == "__main__":
-    st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">', unsafe_allow_html=True)
     main()
