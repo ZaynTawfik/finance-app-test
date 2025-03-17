@@ -122,6 +122,13 @@ def main():
         "United Arab Emirates (UAE)",
         "Singapore"
         ]
+        COUNTRY_CURRENCY = {
+        "India": "INR",
+        "United States (USA)": "USD",
+        "United Kingdom (UK)": "GBP",
+        "United Arab Emirates (UAE)": "AED",
+        "Singapore": "SGD"
+        }
         with st.form("profile_form"):
             col1, col2 = st.columns(2)
             with col1:
@@ -150,6 +157,7 @@ def main():
                 st.success("Profile updated successfully!")
             
             st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
+            st.session_state.profile['currency'] = COUNTRY_CURRENCY.get(st.session_state.profile['country'], 'INR')
             col5, col6 = st.columns(2)
             with col5:
                 st.write("Current Portfolio:", st.session_state.investments['current_portfolio'] )  
@@ -198,7 +206,7 @@ def main():
                     st.session_state.settings['investment_increase'])
                 st.session_state.profile['retirement_age'] = retirement_age
                 st.session_state.profile['retirement_money'] = retirement_money
-                st.success(f"Current Projected Retirement is at age {retirement_age} with {retirement_money:,.2f}")
+                st.success(f"Current Projected Retirement is at age {retirement_age} with {st.session_state.profile['currency']}{retirement_money:,.2f}")
         else:
             st.info("No goals added yet")
             
@@ -207,7 +215,7 @@ def main():
         st.header("Your Personalized Action Plan")
         st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
-            st.subheader(f"Current Projected Retirement is at {st.session_state.profile['retirement_age']} with {st.session_state.profile['retirement_money']:,.2f}")
+            st.subheader(f"Current Projected Retirement is at {st.session_state.profile['retirement_age']} with {st.session_state.profile['currency']}{st.session_state.profile['retirement_money']:,.2f}")
             
         if st.session_state.profile:
             if st.button("Get Plan & Recommendations", type="primary"):
