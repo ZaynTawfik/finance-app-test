@@ -141,7 +141,7 @@ def main():
                 st.session_state.profile['monthly_expense'] = st.number_input("Avg. Monthly Expenses", min_value=0, value=13000)
                 st.session_state.profile['loans'] = st.number_input("Active Monthly Loans/EMIs", min_value=0, value=0)
 
-            st.subheader("Current Investments")
+            st.caption("Current Investments")
             
             col3, col4 = st.columns(2)
             
