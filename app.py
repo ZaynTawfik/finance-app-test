@@ -214,7 +214,7 @@ def main():
             
     # Recommendations Page
     elif page == "Recommendations":
-        st.header("📊 Your Personalized Action Plan")
+        st.header("📊 AI-Powered Financial Report & Recommendations")
         st.markdown("---")
         if 'retirement_age' in st.session_state.profile:
             st.caption(f"Your current projected retirement is at age")
