@@ -265,8 +265,8 @@ def main():
                 st.subheader("Comprehensive Financial Plan")
                 st.markdown(final_report.raw)
     # Settings Page
-    elif page == ":gear: Settings":
-        st.header("Financial Assumptions Settings")
+    elif page == "Settings":
+        st.header(":gear: Settings (Assumptions)")
         st.markdown("---")
         with st.form("settings_form"):
             inflation = st.number_input("Inflation Rate (% p.a.)", 
