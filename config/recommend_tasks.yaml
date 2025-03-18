@@ -24,7 +24,7 @@ create_recommendations:
 
 generate_report :
   description: >
-    Compile a comprehensive financial report for the client containing:
+    Compile a comprehensive financial report for the client titled "Comprehensive Financial Report & Recommendations" containing:
     1. Client Overview
     2. Financial Analysis
     A. Cash Flow & Savings
