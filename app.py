@@ -153,6 +153,8 @@ def main():
                 st.session_state.investments['Bonds'] = st.number_input("Bonds", min_value=0, value=15000)
                 st.session_state.investments['real_estate'] = st.number_input("Real Estate", min_value=0, value=100000)
                 st.session_state.investments['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
+            st.text("")
+            st.text("")
             if st.form_submit_button("💾 Save Profile"):
                 st.success("Profile updated successfully!")
             
@@ -281,7 +283,8 @@ def main():
             investment_increase = st.number_input("Annual Increase in Investments (%)", 
                                                  min_value=0.0, max_value=50.0, 
                                                  value=st.session_state.settings['investment_increase'])
-            
+            st.text("")
+            st.text("")
             if st.form_submit_button("💾 Save Settings"):
                 st.session_state.settings = {
                     'inflation': inflation,
