@@ -171,13 +171,13 @@ def main():
         st.header("🎯 Financial Goals")
         st.text("")
         #st.markdown("---")
-        with st.expander("➕ Add New Goal"):
+        with st.expander("Add New Goal"):
             with st.form("goal_form"):
                 goal_name = st.text_input("Goal Name")
                 target_age = st.number_input("Target Age", min_value=18, max_value=100, value=28)
                 target_amount = st.number_input("Target Amount", min_value=0, value=0)
                 
-                if st.form_submit_button("Add Goal",type="tertiary"):
+                if st.form_submit_button("➕ Add Goal",type="tertiary"):
                     st.session_state.goals.append({
                         'name': goal_name,
                         'age': target_age,
