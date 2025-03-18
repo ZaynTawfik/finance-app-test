@@ -108,7 +108,7 @@ def main():
                 }
             </style>
             """, unsafe_allow_html=True)
-            st.markdown('<div class="profile-name">Thoufeek Hussain</div>', unsafe_allow_html=True)
+            st.markdown('<div class="profile-name">Guest</div>', unsafe_allow_html=True)
     
     
     
