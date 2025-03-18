@@ -264,7 +264,9 @@ def main():
                     'retirement_money' : st.session_state.profile['retirement_money'],
                     'country': st.session_state.profile['country'],
                 })
-                st.subheader("Comprehensive Financial Plan")
+                st.text("")
+                st.text("")
+                st.text("")
                 st.markdown(final_report.raw)
     # Settings Page
     elif page == "Settings":
