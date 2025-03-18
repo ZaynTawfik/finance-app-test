@@ -224,7 +224,7 @@ def main():
         st.text("")
         st.text("")
         if st.session_state.profile:
-            if st.button(":sparkles: Get Plan & Recommendations", type="primary"):
+            if st.button(":sparkles: Get Full Report & Recommendations", type="primary"):
                 #agents
                 financial_analyst = Agent(config=rec_agents_config['financial_analyst'])
                 wealth_manager = Agent(config=rec_agents_config['wealth_manager'])
