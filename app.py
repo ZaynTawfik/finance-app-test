@@ -153,7 +153,7 @@ def main():
                 st.session_state.investments['Bonds'] = st.number_input("Bonds", min_value=0, value=15000)
                 st.session_state.investments['real_estate'] = st.number_input("Real Estate", min_value=0, value=100000)
                 st.session_state.investments['roi_pct'] = st.number_input("Est. Avg. Retunrs (%)p.a.", min_value=0, value=10)
-            if st.form_submit_button("Save Profile"):
+            if st.form_submit_button("💾 Save Profile"):
                 st.success("Profile updated successfully!")
             
             st.session_state.investments['current_portfolio'] = st.session_state.investments['Bonds'] + st.session_state.investments['Equity'] + st.session_state.investments['Bonds'] + st.session_state.investments['real_estate'] + st.session_state.investments['Crypto'] + st.session_state.investments['commodity'] 
@@ -282,7 +282,7 @@ def main():
                                                  min_value=0.0, max_value=50.0, 
                                                  value=st.session_state.settings['investment_increase'])
             
-            if st.form_submit_button("Save Settings"):
+            if st.form_submit_button("💾 Save Settings"):
                 st.session_state.settings = {
                     'inflation': inflation,
                     'life_expectancy': life_expectancy,
