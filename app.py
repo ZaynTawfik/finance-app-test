@@ -19,8 +19,13 @@ warnings.filterwarnings('ignore')
 # Load environment variables
 load_env()
 
+openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_base = 'https://api.deepseek.com'        # DeepSeek base URL :contentReference[oaicite:2]{index=2}
+#openai.api_version = 'v1'
 # Set OpenAI model (Update with your model choice)
-os.environ['OPENAI_MODEL_NAME'] = 'gpt-4o-mini'
+os.environ['OPENAI_MODEL_NAME'] = 'deepseek/deepseek-chat'
+# Override OpenAI base URL to DeepSeek endpoint
+#os.environ['OPENAI_BASE_URL'] = 'https://api.deepseek.com'
 
 def load_yaml(file_path):
     with open(file_path, 'r') as file:
