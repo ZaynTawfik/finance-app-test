@@ -9,6 +9,7 @@ from crewai import Agent, Task, Crew
 from helper import load_env
 import os
 import yaml
+import openai
 # Suppress warnings
 import warnings
 warnings.filterwarnings('ignore')
