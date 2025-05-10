@@ -51,7 +51,7 @@ Most don’t realize they’re only few calculations away from:
 
 
 Coyn makes these calculations automatic. 
-Try now to see what your retirement could look like → https://lnkd.in/gKcJKJBm 
+Try now to see what your retirement could look like → https://ai-fin-advisor.streamlit.app/
 
 
 ### 🌱 What’s Next
